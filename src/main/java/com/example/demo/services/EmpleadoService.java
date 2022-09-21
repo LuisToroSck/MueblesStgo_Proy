@@ -1,10 +1,9 @@
 package com.example.demo.services;
 
+import com.example.demo.entities.EmpleadoEntity;
 import com.example.demo.repositories.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.demo.entities.EmpleadoEntity;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class EmpleadoService {
     }
 
     public EmpleadoEntity obtenerPorRut(String rutEmpleado){
-        return empleadoRepository.findByRut(rutEmpleado );
+        return empleadoRepository.findByRutEmpleado(rutEmpleado );
     }
 
 }

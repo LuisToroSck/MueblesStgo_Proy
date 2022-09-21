@@ -5,25 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
-@Table(name= "empleados")
+@Table(name= "datareloj")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmpleadoEntity {
 
+public class DatarelojEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = false, nullable = false)
-    private Long id;
+    private Long idDataReloj;
 
-    private String rutEmpleado;
+    private String rutEmpleadoReloj;
 
-    private String apellidos;
-    private String nombres;
-    private Date fechaIngreso;
-    private String categoria;
-    private Date fechaNacimiento;
+    private Date fecha;
+
+    private String horaIngreso;
+
+    private String horaSalida;
 }
