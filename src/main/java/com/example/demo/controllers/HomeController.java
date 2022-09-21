@@ -25,8 +25,11 @@ public class HomeController {
     @PostMapping("/cargar")
     public String carga( @RequestParam("archivos") MultipartFile file, RedirectAttributes ms) {
         upload.save(file);
-        ms.addFlashAttribute("mensaje", "Archivo guardado correctamente!!");
-        return "redirect:/";
+
+        return "redirect:/cargarReloj";
     }
+
+
+
 
 }

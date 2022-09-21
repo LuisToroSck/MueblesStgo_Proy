@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
+import java.sql.Time;
 
 @Entity
 @Table(name= "datareloj")
@@ -23,7 +25,8 @@ public class DatarelojEntity {
 
     private Date fecha;
 
-    private String horaIngreso;
+    private Time horaIngreso;
 
-    private String horaSalida;
+    public void add(DatarelojEntity datarelojEntity) {
+    }
 }
