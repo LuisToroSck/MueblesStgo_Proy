@@ -11,9 +11,10 @@
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 
-    <title>Home</title>
+    <title>Justificativos</title>
 </head>
 <body>
+
 
 
 <nav class="navbar navbar-expand-lg bg-light">
@@ -44,15 +45,26 @@
 
 
 
-<h1>Carga de archivos</h1>
+
 
 <div class="container">
-    <form th:action="@{/cargar}" method="post" enctype="multipart/form-data">
-        <input type="file" class="form-control" name="archivos">
-        <input type="submit" value="Carga">
-    </form>
-
-    <h3 th:text="${mensaje}"></h3>
+    <div class="row">
+        <h1>Lista de autorizaciones</h1>
+    </div>
+    <table class="table table-success table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rut Empleado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "autorizacion : ${autorizaciones}">
+            <td th:text = "${autorizacion.idAutorizacion}">ID</td>
+            <td th:text = "${autorizacion.rutEmpleadoAutorizacion}">Rut Empleado</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

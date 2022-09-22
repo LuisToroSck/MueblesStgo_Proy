@@ -11,7 +11,7 @@
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 
-    <title>Home</title>
+    <title>Crea Autorización</title>
 </head>
 <body>
 
@@ -44,15 +44,29 @@
 
 
 
-<h1>Carga de archivos</h1>
 
+<br>
 <div class="container">
-    <form th:action="@{/cargar}" method="post" enctype="multipart/form-data">
-        <input type="file" class="form-control" name="archivos">
-        <input type="submit" value="Carga">
-    </form>
+    <div class="row">
+        <div class="col-lg-6 col-md col-sm-6 container justify-content-center-card">
+            <h1 class="text-center">Ingreso de autorización</h1>
+            <div class="card-body">
+                <form th:action="@{/autorizaciones}" th:object="${autorizacion}" method="post">
+                    <div class="form-group">
 
-    <h3 th:text="${mensaje}"></h3>
+                        <label>Rut Empleado: </label>
+                        <input type="text" name="rutEmpleadoAutorizacion" th:field="*{rutEmpleadoAutorizacion}" class="form-control" placeholder="Ingresa el rut del empleado" required>
+
+                    </div>
+                    <br>
+                    <div clas="box-footer">
+                        <button class="btn btn-success">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
