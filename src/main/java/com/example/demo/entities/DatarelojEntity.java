@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
-import java.sql.Time;
 
 @Entity
 @Table(name= "datareloj")

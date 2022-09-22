@@ -25,7 +25,6 @@ public class HomeController {
     @PostMapping("/cargar")
     public String carga( @RequestParam("archivos") MultipartFile file, RedirectAttributes ms) {
         upload.save(file);
-
         return "redirect:/cargarReloj";
     }
 

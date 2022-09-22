@@ -1,9 +1,8 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.DatarelojEntity;
-import com.example.demo.entities.EmpleadoEntity;
 import com.example.demo.repositories.DataRelojRepository;
-import com.example.demo.repositories.EmpleadoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +12,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
