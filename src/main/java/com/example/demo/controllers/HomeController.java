@@ -27,8 +27,4 @@ public class HomeController {
         upload.save(file);
         return "redirect:/cargarReloj";
     }
-
-
-
-
 }

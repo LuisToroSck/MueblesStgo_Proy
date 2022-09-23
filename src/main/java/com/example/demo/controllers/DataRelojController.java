@@ -19,9 +19,9 @@ public class DataRelojController {
 
     @GetMapping("/cargarReloj")
     public String cargarReloj(RedirectAttributes ms) throws FileNotFoundException {
-        reloj.gurdarDatos();
+        reloj.guardarDatos();
         ms.addFlashAttribute("mensaje", "Archivo guardado correctamente!!");
-        return "redirect:/";
+        return "redirect:/"; /* ahora esta cuestion me tiene q redirigir al controlador de autorizacion para calcular las horas*/
+                             /* extras de los empleados*/
     }
-
 }

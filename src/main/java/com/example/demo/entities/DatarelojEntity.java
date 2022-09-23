@@ -24,8 +24,6 @@ public class DatarelojEntity {
 
     private Date fecha;
 
-    private Time horaIngreso;
+    private Time hora;
 
-    public void add(DatarelojEntity datarelojEntity) {
-    }
 }

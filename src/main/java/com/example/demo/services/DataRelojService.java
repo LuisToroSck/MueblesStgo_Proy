@@ -24,7 +24,7 @@ public class DataRelojService {
         return dataRelojRepository.save(reloj);
     }
 
-    public void gurdarDatos() throws FileNotFoundException {
+    public void guardarDatos() throws FileNotFoundException {
         /*List<DatarelojEntity> datos = new ArrayList<DatarelojEntity>();*/
         String ruta = "cargas/marcaRelojEmpleados.txt";
         File archivo = new File(ruta);
@@ -44,8 +44,8 @@ public class DataRelojService {
                     Date fecha = new Date(formatoFecha.parse(atributo.nextElement().toString()).getTime());
                     datarelojEntity.setFecha(fecha);
 
-                    Time horaIngreso = new Time(formatoHora.parse(atributo.nextElement().toString()).getTime());
-                    datarelojEntity.setHoraIngreso(horaIngreso);
+                    Time hora = new Time(formatoHora.parse(atributo.nextElement().toString()).getTime());
+                    datarelojEntity.setHora(hora);
 
                     datarelojEntity.setRutEmpleadoReloj(atributo.nextElement().toString());
                 }

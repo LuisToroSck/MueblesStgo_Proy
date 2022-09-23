@@ -18,4 +18,7 @@ public class AutorizacionEntity {
     private Long idAutorizacion;
 
     private String rutEmpleadoAutorizacion;
+
+    @Column(unique = false, nullable = true)
+    private int cantidadHorasExtras;
 }
