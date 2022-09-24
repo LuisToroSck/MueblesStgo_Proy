@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.List;
 
 @Service
 public class DataRelojService {
@@ -56,6 +57,10 @@ public class DataRelojService {
         catch (FileNotFoundException | ParseException e){
             e.printStackTrace();
         }
+    }
+
+    public List<DatarelojEntity> listarMarcasReloj(){
+        return dataRelojRepository.findAll();
     }
 
 }

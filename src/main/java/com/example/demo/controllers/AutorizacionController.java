@@ -37,6 +37,7 @@ public class AutorizacionController {
     /* este es el guardar*/
     @PostMapping("/guardar")
     public String guardarAutorizaciones(@ModelAttribute("autorizacion") AutorizacionEntity autorizacion){
+        System.out.println(autorizacion.getId());
         autorizacionService.actualizarAutorizacion(1, autorizacion.getId());
         return "redirect:/autorizaciones";
     }
