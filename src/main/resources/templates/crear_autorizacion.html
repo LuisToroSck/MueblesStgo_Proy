@@ -51,18 +51,52 @@
         <div class="col-lg-6 col-md col-sm-6 container justify-content-center-card">
             <h1 class="text-center">Ingreso de autorización</h1>
             <div class="card-body">
-                <form th:action="@{/autorizaciones}" th:object="${autorizacion}" method="post">
+
+            <form th:action="@{/guardar}" th:object="${autorizacion}" method="POST">
+                <div class ="card">
+                    <div class="card-header">
+                        <h2>Horas extras</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>¿Quiere autorizar las horas extras del empleado?</label>
+
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <input type="submit" value="Autorizar" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+
+                <!--<form th:action="@{/autorizaciones}" th:object="${autorizacion}" method="post">
                     <div class="form-group">
 
                         <label>Rut Empleado: </label>
                         <input type="text" name="rutEmpleadoAutorizacion" th:field="*{rutEmpleadoAutorizacion}" class="form-control" placeholder="Ingresa el rut del empleado" required>
 
+                        <br>
+                        Rut del empleado
+                        <select th:field="*{rutEmpleado}" class="form-select" aria-label="Default select example">
+                            <option th:each = "autorizacion:${autorizaciones}"
+                            th:value="${autorizacion.rutEmpleado}"
+                            th:text ="${autorizacion.rutEmpleado}"/>
+                        </select>
+
+
+
                     </div>
                     <br>
                     <div clas="box-footer">
-                        <button class="btn btn-success">Ingresar</button>
+                        <button class="btn btn-success">Autorizar horas extras</button>
                     </div>
-                </form>
+                </form>-->
             </div>
         </div>
     </div>

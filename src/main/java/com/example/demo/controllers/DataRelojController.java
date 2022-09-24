@@ -21,7 +21,7 @@ public class DataRelojController {
     public String cargarReloj(RedirectAttributes ms) throws FileNotFoundException {
         reloj.guardarDatos();
         ms.addFlashAttribute("mensaje", "Archivo guardado correctamente!!");
-        return "redirect:/"; /* ahora esta cuestion me tiene q redirigir al controlador de autorizacion para calcular las horas*/
+        return "redirect:/"; /* ahora esto me tiene q redirigir al controlador de autorizacion para calcular las horas*/
                              /* extras de los empleados*/
     }
 }

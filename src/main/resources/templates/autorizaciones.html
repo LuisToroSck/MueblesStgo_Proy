@@ -11,7 +11,7 @@
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 
-    <title>Justificativos</title>
+    <title>Autorizaciones</title>
 </head>
 <body>
 
@@ -56,12 +56,18 @@
         <tr>
             <th>ID</th>
             <th>Rut Empleado</th>
+            <th>Horas extras</th>
+            <th>¿Están autorizadas?</th>
+            <th>Acción</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each = "autorizacion : ${autorizaciones}">
-            <td th:text = "${autorizacion.idAutorizacion}">ID</td>
-            <td th:text = "${autorizacion.rutEmpleadoAutorizacion}">Rut Empleado</td>
+            <td th:text = "${autorizacion.id}">ID</td>
+            <td th:text = "${autorizacion.rutEmpleado}">Rut Empleado</td>
+            <td th:text = "${autorizacion.cantidadHorasExtras}">Horas extras</td>
+            <td th:text = "${autorizacion.autorizado}">Autorizado</td>
+            <td> <a th:href = "@{/editar/{id} (id= ${autorizacion.id})}" class="btn">Ingresar autorización</a> </td>
         </tr>
         </tbody>
     </table>

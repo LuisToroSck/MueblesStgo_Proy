@@ -15,10 +15,13 @@ public class AutorizacionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = false, nullable = false)
-    private Long idAutorizacion;
+    private Long id;
 
-    private String rutEmpleadoAutorizacion;
+    private String rutEmpleado;
 
     @Column(unique = false, nullable = true)
     private int cantidadHorasExtras;
+
+    @Column(unique = false, nullable = true)
+    private int autorizado;
 }
