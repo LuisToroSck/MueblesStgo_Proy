@@ -51,19 +51,46 @@
         <div class="col-lg-6 col-md col-sm-6 container justify-content-center-card">
             <h1 class="text-center">Ingreso de justificativo</h1>
             <div class="card-body">
-                <form th:action="@{/justificativos}" th:object="${justificativo}" method="post">
+
+                <form th:action="@{/guardarJustificativo}" th:object="${justificativo}" method="POST">
+                    <div class ="card">
+                        <div class="card-header">
+                            <h2>Inasistencia</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>¿Quiere justificar la inasistencia del empleado?</label>
+
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <input type="submit" value="Justificar" class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+                <!--<form th:action="@{/justificativos}" th:object="${justificativo}" method="post">
                     <div class="form-group">
                         <label>Rut Empleado: </label>
                         <input type="text" name="rutEmpleado" th:field="*{rutEmpleado}" class="form-control" placeholder="Ingresa el rut del empleado" required>
                     <br>
                         <label>Fecha: </label>
-                        <input type="date" name="fecha" th:field="*{fecha}" class="form-control" placeholder="Ingresa la fecha del justificativo" required>
+                        <input type="date" name="justificada" th:field="*{justificada}" class="form-control" placeholder="Ingresa la fecha del justificativo" required>
                     </div>
                     <br>
                     <div clas="box-footer">
                         <button class="btn btn-success">Ingresar</button>
                     </div>
-                </form>
+                </form>-->
             </div>
         </div>
     </div>

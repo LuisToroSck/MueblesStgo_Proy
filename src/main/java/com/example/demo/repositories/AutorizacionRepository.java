@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface AutorizacionRepository extends JpaRepository<AutorizacionEntity, Long> {
@@ -16,8 +17,10 @@ public interface AutorizacionRepository extends JpaRepository<AutorizacionEntity
     @Transactional
     @Modifying
     @Query(value = "update autorizacion a set a.autorizado = :aut where a.id=:id",nativeQuery = true)
-    public void actualizarAutorizacion(@Param("aut") int aut, @Param("id") Long id);
+    void actualizarAutorizacion(@Param("aut") int aut, @Param("id") Long id);
 
 
+    @Query("select a from AutorizacionEntity a where a.id=:id")
+    AutorizacionEntity getById(@Param("id") Long id);
 
 }

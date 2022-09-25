@@ -19,7 +19,9 @@ public class JustificativoEntity {
     @Column(unique = false, nullable = false)
     private Long idJustificativo;
 
-    private int rutEmpleado;
+    private String rutEmpleado;
+
+    private int justificada;
 
     private Date fecha;
 }

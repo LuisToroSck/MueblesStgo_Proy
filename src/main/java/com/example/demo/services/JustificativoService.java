@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JustificativoService {
@@ -19,6 +20,14 @@ public class JustificativoService {
 
     public JustificativoEntity guardarJustificativo(JustificativoEntity justificativo){
         return justificativoRepository.save(justificativo);
+    }
+
+    public Optional<JustificativoEntity> listarId(Long id){
+        return justificativoRepository.findById(id);
+    }
+
+    public void actualizarJustativo(int just, Long id){
+        justificativoRepository.actualizarJustificativo(just,id);
     }
 
 }
