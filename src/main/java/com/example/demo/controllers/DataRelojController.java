@@ -5,6 +5,7 @@ import com.example.demo.entities.DatarelojEntity;
 import com.example.demo.repositories.DataRelojRepository;
 import com.example.demo.services.AutorizacionService;
 import com.example.demo.services.DataRelojService;
+import com.example.demo.services.JustificativoService;
 import org.hibernate.boot.model.relational.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,15 @@ public class DataRelojController {
     @Autowired
     AutorizacionService calculo;
 
+    @Autowired
+    JustificativoService inasistencias;
+
     @GetMapping("/cargarReloj")
     public String cargarReloj(RedirectAttributes ms) throws FileNotFoundException {
         reloj.guardarDatos();
         List<DatarelojEntity> marcasReloj = reloj.listarMarcasReloj();
         calculo.calcularHorasExtras(marcasReloj);
+        inasistencias.calcularInasistencias(marcasReloj);
         ms.addFlashAttribute("mensaje", "!Archivo guardado correctamente!");
         return "redirect:/";
 
