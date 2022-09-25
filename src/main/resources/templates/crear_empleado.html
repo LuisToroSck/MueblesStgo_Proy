@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
+
+    <title>Crea Empleado</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" href="#">NAVBAR</a>
+    <div class = "collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/justificativos">Justificativos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/justificativos/nuevo">Ingresar Justificativo</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/autorizaciones">Autorizaciones</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/autorizaciones/nuevo">Ingresar Autorización</a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md col-sm-6 container justify-content-center-card">
+            <h1 class="text-center">Ingreso de empleado</h1>
+            <div class="card-body">
+
+
+                <form th:action="@{/empleados}" th:object="${empleado}" method="post">
+                    <div class="form-group">
+                        <label>Rut empleado: </label>
+                        <input type="text" name="rutEmpleado" th:field="*{rutEmpleado}" class="form-control" placeholder="Ingrese el rut del empleado (con puntos (.) y guión (-))" requured>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label>Apellidos: </label>
+                        <input type="text" name="apellidos" th:field="*{apellidos}" class="form-control" placeholder="Ingrese los apellidos del empleado" requured>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label>Nombres: </label>
+                        <input type="text" name="nombres" th:field="*{nombres}" class="form-control" placeholder="Ingrese los nombres del empleado" requured>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label>Fecha de ingreso a la empresa: </label>
+                        <input type="date" name="fechaIng" th:field="*{fechaIngreso}" class="form-control" placeholder="Ingresa la fecha de ingreso a la empresa del empleado" required>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <select class="form-control" th:field="*{categoria}" required>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento: </label>
+                        <input type="date" name="fechaNac" th:field="*{fechaNacimiento}" class="form-control" placeholder="Ingresa la fecha de nacimiento del empleado" required>
+                    </div>
+
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success">Ingresar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

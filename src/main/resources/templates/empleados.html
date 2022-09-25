@@ -11,10 +11,9 @@
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 
-    <title>Justificativos</title>
+    <title>Empleados</title>
 </head>
 <body>
-
 
 
 
@@ -52,30 +51,32 @@
 
 
 
-
 <div class="container">
     <div class="row">
-        <h1>Lista de justificativos (inasistencias)</h1>
+        <h1>Lista de autorizaciones</h1>
     </div>
     <table class="table table-success table-striped table-bordered">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Rut Empleado</th>
-                <th>Fecha de inasistencia</th>
-                <th>¿Está justificada?</th>
-                <th>Acción</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Rut Empleado</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Fecha de nacimiento</th>
+            <th>Fecha de ingreso</th>
+            <th>Categoria</th>
+        </tr>
         </thead>
         <tbody>
-            <tr enctype="multipart/form-data" th:each = "justificativo : ${justificativos}">
-                <td th:text = "${justificativo.idJustificativo}">ID</td>
-                <td th:text = "${justificativo.rutEmpleado}">Rut Empleado</td>
-                <td th:text = "${justificativo.fecha}">Fecha</td>
-                <td th:text = "${justificativo.justificada}">¿Está justificada?</td>
-                <td> <form method="POST" th:action = "@{/guardarJustificativo/{id} (id= ${justificativo.idJustificativo})}">
-                    <button type="submit" name="submit" value="value" class="link-button">Modificar estado</button></form> </td>
-            </tr>
+        <tr enctype="multipart/form-data" th:each = "empleado : ${empleados}">
+            <td th:text = "${empleado.id}">ID</td>
+            <td th:text = "${empleado.rutEmpleado}">Rut Empleado</td>
+            <td th:text = "${empleado.apellidos}">Apellidos</td>
+            <td th:text = "${empleado.nombres}">Nombres</td>
+            <td th:text = "${empleado.fechaNacimiento}">Fecha de nacimiento</td>
+            <td th:text = "${empleado.fechaIngreso}">Fecha de ingreso</td>
+            <td th:text = "${empleado.categoria}">Categoria</td>
+        </tr>
         </tbody>
     </table>
 </div>
