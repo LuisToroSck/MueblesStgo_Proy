@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "planilla")
+@Table(name= "sueldo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlanillaEntity {
+public class SueldoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = false, nullable = false)
@@ -19,19 +19,19 @@ public class PlanillaEntity {
 
     private String rutEmpleado;
 
-    private int sueldoFijoMensual;
+    private double sueldoFijoMensual;
 
-    private int bonificacionAniosServicio;
+    private double bonificacionAniosServicio;
 
-    private int pagoHorasExtras;
+    private double pagoHorasExtras;
 
-    private int descuentos;
+    private double descuentos;
 
-    private int sueldoBruto;
+    private double sueldoBruto;
 
-    private int cotizacionPrevisional;
+    private double cotizacionPrevisional;
 
-    private int cotizacionSalud;
+    private double cotizacionSalud;
 
-    private int sueldoFinal;
+    private double sueldoFinal;
 }

@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.demo.entities.AutorizacionEntity;
 import com.example.demo.entities.DatarelojEntity;
 import com.example.demo.repositories.AutorizacionRepository;
@@ -31,6 +30,10 @@ public class AutorizacionService {
 
     public Optional<AutorizacionEntity> listarId(Long id){
         return autorizacionRepository.findById(id);
+    }
+
+    public AutorizacionEntity getByRut(String rutEmpleado){
+        return autorizacionRepository.getByRut(rutEmpleado);
     }
 
     public void actualizarAutorizacion(int aut, Long id){

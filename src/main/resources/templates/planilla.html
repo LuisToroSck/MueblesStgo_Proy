@@ -11,11 +11,9 @@
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 
-    <title>Autorizaciones</title>
+    <title>Empleados</title>
 </head>
 <body>
-
-
 
 
 
@@ -50,6 +48,9 @@
 </nav>
 
 
+
+
+
 <div class="container">
     <div class="row">
         <h1>Lista de autorizaciones</h1>
@@ -58,20 +59,30 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Rut Empleado</th>
-            <th>Horas extras</th>
-            <th>¿Están autorizadas?</th>
-            <th>Acción</th>
+            <th>Rut empleado</th>
+            <th>Sueldo fijo Mensual</th>
+            <th>Bonificación por años de servicio</th>
+            <th>Pago horas extras</th>
+            <th>Descuentos por atrasos e inasistencias</th>
+            <th>Sueldo bruto</th>
+            <th>Cotización previsional</th>
+            <th>Cotización salud</th>
+            <th>Sueldo final</th>
         </tr>
         </thead>
         <tbody>
-        <tr enctype="multipart/form-data" th:each = "autorizacion : ${autorizaciones}">
-            <td th:text = "${autorizacion.id}">ID</td>
-            <td th:text = "${autorizacion.rutEmpleado}">Rut Empleado</td>
-            <td th:text = "${autorizacion.cantidadHorasExtras}">Horas extras</td>
-            <td th:text = "${autorizacion.autorizado}">Autorizado</td>
-            <td> <form method="POST" th:action = "@{/guardar/{id} (id= ${autorizacion.id})}">
-                <button type="submit" name="submit" value="value" class="link-button">Modificar estado</button></form> </td>
+        <tr enctype="multipart/form-data" th:each = "sueldo : ${sueldos}">
+            <td th:text = "${sueldo.id}">ID</td>
+            <td th:text = "${sueldo.rutEmpleado}">Rut Empleado</td>
+            <td th:text = "${sueldo.sueldoFijoMensual}">Sueldo fijo mensual</td>
+            <td th:text = "${sueldo.bonificacionAniosServicio}">Años servicio</td>
+            <td th:text = "${sueldo.pagoHorasExtras}">Horas extras</td>
+            <td th:text = "${sueldo.descuentos}">Descuentos</td>
+            <td th:text = "${sueldo.sueldoBruto}">Sueldo bruto</td>
+            <td th:text = "${sueldo.cotizacionPrevisional}">Previsional</td>
+            <td th:text = "${sueldo.cotizacionSalud}">Salud</td>
+            <td th:text = "${sueldo.sueldoFinal}">Sueldo final</td>
+
         </tr>
         </tbody>
     </table>

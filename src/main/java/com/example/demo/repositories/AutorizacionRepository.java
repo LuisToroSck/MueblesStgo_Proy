@@ -23,4 +23,7 @@ public interface AutorizacionRepository extends JpaRepository<AutorizacionEntity
     @Query("select a from AutorizacionEntity a where a.id=:id")
     AutorizacionEntity getById(@Param("id") Long id);
 
+    @Query("select a from AutorizacionEntity a where a.rutEmpleado=:rutEmpleado")
+    AutorizacionEntity getByRut(@Param("rutEmpleado") String rutEmpleado);
+
 }
