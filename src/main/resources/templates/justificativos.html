@@ -13,34 +13,65 @@
 
     <title>Justificativos</title>
 </head>
+
+<style>
+    navbar{
+        color:#56C2DD;
+    }
+    table{
+        background-color: #E49487;
+        table-border-color-dark: black;
+    }
+    body{
+        background-color: #F8E4D7;
+        font-family: "Century Gothic";
+        color: #56C2DD;
+    }
+    button {
+        outline-style: auto;
+        outline-color: #F8E4D7;
+        background-color: #E49487;
+        transition-duration: 0.2s;
+    }
+
+    button:hover {
+        background-color: #F8E4D7;
+    }
+    nav{
+        background-color: #56C2DD;
+        color: black;
+    }
+    a{
+        color: black;
+    }
+    ul{
+        color: black;
+    }
+    li{
+        color: black;
+    }
+</style>
+
 <body>
 
 
 
 
-<nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" href="#">NAVBAR</a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/">Inicio</a>
     <div class = "collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="/justificativos">Justificativos</a>
+                <a class="nav-link" href="/justificativos">Administrar justificativos</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/justificativos/nuevo">Ingresar Justificativo</a>
+                <a class="nav-link" href="/autorizaciones">Administrar autorizaciones</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/autorizaciones">Autorizaciones</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/autorizaciones/nuevo">Ingresar Autorización</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/calcularPlanilla">CALCULAR PLANILLAAAAA</a>
+                <a class="nav-link" href="/calcularPlanilla">Calcular planilla</a>
             </li>
 
         </ul>
@@ -55,15 +86,15 @@
 
 <div class="container">
     <div class="row">
-        <h1>Lista de justificativos (inasistencias)</h1>
+        <h1>Inasistencias</h1>
     </div>
-    <table class="table table-success table-striped table-bordered">
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Rut Empleado</th>
                 <th>Fecha de inasistencia</th>
-                <th>¿Está justificada?</th>
+                <th>Estado</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -72,9 +103,19 @@
                 <td th:text = "${justificativo.idJustificativo}">ID</td>
                 <td th:text = "${justificativo.rutEmpleado}">Rut Empleado</td>
                 <td th:text = "${justificativo.fecha}">Fecha</td>
-                <td th:text = "${justificativo.justificada}">¿Está justificada?</td>
-                <td> <form method="POST" th:action = "@{/guardarJustificativo/{id} (id= ${justificativo.idJustificativo})}">
-                    <button type="submit" name="submit" value="value" class="link-button">Modificar estado</button></form> </td>
+                <div th:if="${justificativo.justificada} == 1">
+                    <td>Justificada</td>
+                    <td> <form method="POST" th:action = "@{/guardarJustificativo/{id} (id= ${justificativo.idJustificativo})}">
+                        <button type="submit" name="submit" value="value">Retirar justificativo</button></form> </td>
+                </div>
+                <div th:if="${justificativo.justificada} == 0">
+                    <td>No justificada</td>
+                    <td> <form method="POST" th:action = "@{/guardarJustificativo/{id} (id= ${justificativo.idJustificativo})}">
+                        <button type="submit" name="submit" value="value">Ingresar justificativo</button></form> </td>
+                </div>
+
+                <!--<td> <form method="POST" th:action = "@{/guardarJustificativo/{id} (id= ${justificativo.idJustificativo})}">
+                    <button type="submit" name="submit" value="value">Ingresar justificativo</button></form> </td>-->
             </tr>
         </tbody>
     </table>

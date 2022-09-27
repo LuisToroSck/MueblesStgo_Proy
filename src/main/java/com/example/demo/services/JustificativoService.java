@@ -35,7 +35,7 @@ public class JustificativoService {
         List<JustificativoEntity> justificativos = justificativoRepository.findAll();
         int i = 0;
         while(i < marcasReloj.size()){
-            if( (marcasReloj.get(i).getHora().getHours() >= 9) && (marcasReloj.get(i).getHora().getMinutes() > 10) && (marcasReloj.get(i).getHora().getHours() < 14)){
+            if( ((marcasReloj.get(i).getHora().getHours() >= 9) && (marcasReloj.get(i).getHora().getMinutes() > 10) || (marcasReloj.get(i).getHora().getHours() >=10)) && (marcasReloj.get(i).getHora().getHours() < 14)){
                 JustificativoEntity nuevoJustificativo = new JustificativoEntity();
 
                 int idNuevo = justificativos.size() + 1;

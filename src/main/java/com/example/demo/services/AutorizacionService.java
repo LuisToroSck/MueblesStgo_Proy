@@ -83,16 +83,5 @@ public class AutorizacionService {
             guardarAutorizacion(autorizaciones.get(k));
             k = k + 1;
         }
-
-
-        /*era para mostrar lo que se guardó en el array de autorizaciones
-        int k = 0;
-        while(k< autorizaciones.size()){
-            System.out.println(autorizaciones.get(k).getRutEmpleado());
-            System.out.println(autorizaciones.get(k).getCantidadHorasExtras());
-            k = k + 1;
-        }*/
     }
-
-
 }

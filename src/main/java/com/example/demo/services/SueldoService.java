@@ -19,6 +19,10 @@ public class SueldoService {
     @Autowired
     private DataRelojService dataRelojService;
 
+    public void eliminarSueldos(){
+        sueldoRepository.deleteAll();
+    }
+
     public SueldoEntity guardarSueldo(SueldoEntity sueldo){
         return sueldoRepository.save(sueldo);
     }
@@ -62,33 +66,18 @@ public class SueldoService {
         int i=0;
         while(i<empleados.size()){
 
-            System.out.println("fecha ingreso: "+empleados.get(i).getFechaIngreso());
-            System.out.print("ANIO ingreso: "+empleados.get(i).getFechaIngreso().getYear());
-            System.out.print("\nANIO nac: "+empleados.get(i).getFechaNacimiento().getYear());
-
-            System.out.println("Para el empleado con rut: "+empleados.get(i).getRutEmpleado());
             double sueldoFijoMensual            = oficinaService.calcularSueldoFijoMensual(empleados.get(i));
-            System.out.println("Sueldo fijo mensual: "+sueldoFijoMensual);
             double bonificacionPorAniosServicio = oficinaService.calcularBonificacionPorAniosServicio(empleados.get(i),sueldoFijoMensual);
-            System.out.println("Bonificacion anios: "+bonificacionPorAniosServicio);
             double pagoHorasExtras              = oficinaService.calcularPagoHorasExtras(empleados.get(i),autorizaciones);
-            System.out.println("Pago horas extras: "+pagoHorasExtras);
             List<Integer> atrasos               = dataRelojService.calcularAtrasos(marcasReloj,empleados.get(i));
             double descuentoPorAtraso           = oficinaService.calcularDescuentoPorAtraso(sueldoFijoMensual,atrasos);
-            System.out.println("Descuento por atraso: "+descuentoPorAtraso);
             double descuentoPorInasistencia     = oficinaService.calcularDescuentoPorInasistencia(sueldoFijoMensual,justificativos,empleados.get(i));
-            System.out.println("Descuento por no ir: "+descuentoPorInasistencia);
 
             double sueldoBruto           = calcularSueldoBruto(sueldoFijoMensual,bonificacionPorAniosServicio,pagoHorasExtras,descuentoPorAtraso,descuentoPorInasistencia);
-            System.out.println("Sueldo bruto: "+sueldoBruto);
             double cotizacionPrevisional = calcularCotizacionPrevisional(sueldoBruto);
-            System.out.println("Previsional: "+cotizacionPrevisional);
             double cotizacionSalud       = calcularCotizacionSalud(sueldoBruto);
-            System.out.println("Salud: "+cotizacionSalud);
 
             double sueldoFinal = calcularSueldoFinal(sueldoBruto,cotizacionPrevisional,cotizacionSalud);
-            System.out.println("Sueldo final: "+sueldoFinal);
-            System.out.println("\n");
 
             SueldoEntity nuevoSueldo = new SueldoEntity();
 

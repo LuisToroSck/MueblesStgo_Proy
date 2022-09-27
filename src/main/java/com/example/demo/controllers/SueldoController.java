@@ -6,7 +6,6 @@ import com.example.demo.entities.EmpleadoEntity;
 import com.example.demo.entities.JustificativoEntity;
 import com.example.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.QueryAnnotation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping
-public class PlanillaController {
+public class SueldoController {
 
     @Autowired
     SueldoService sueldoService;
@@ -36,20 +35,16 @@ public class PlanillaController {
     @GetMapping("/calcularPlanilla")
     public String calcularPlanilla(Model model){
 
-
-
         List<EmpleadoEntity> empleados           = empleadoService.obtenerEmpleados();
         List<JustificativoEntity> justificativos = justificativoService.listarJustificativos();
         List<DatarelojEntity> marcasReloj        = dataRelojService.listarMarcasReloj();
         List<AutorizacionEntity> autorizaciones  = autorizacionService.listarAutorizaciones();
 
-
-
+        sueldoService.eliminarSueldos();
         sueldoService.calcularPlanilla(empleados,justificativos,marcasReloj,autorizaciones);
 
-
-
         model.addAttribute("sueldos",sueldoService.listarSueldos());
+        model.addAttribute("empleados",empleados);
         return "planilla";
     }
 
