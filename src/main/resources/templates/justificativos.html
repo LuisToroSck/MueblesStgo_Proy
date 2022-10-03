@@ -15,9 +15,6 @@
 </head>
 
 <style>
-    navbar{
-        color:#56C2DD;
-    }
     table{
         background-color: #E49487;
         table-border-color-dark: black;
@@ -25,7 +22,7 @@
     body{
         background-color: #F8E4D7;
         font-family: "Century Gothic";
-        color: #56C2DD;
+        color: #7B9AD1;
     }
     button {
         outline-style: auto;
@@ -38,18 +35,15 @@
         background-color: #F8E4D7;
     }
     nav{
-        background-color: #56C2DD;
-        color: black;
+        background-color: #7B9AD1;
     }
     a{
         color: black;
     }
-    ul{
+    a:hover{
         color: black;
     }
-    li{
-        color: black;
-    }
+
 </style>
 
 <body>
@@ -57,10 +51,14 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="/">Inicio</a>
     <div class = "collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/empleados">Ver empleados</a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="/justificativos">Administrar justificativos</a>
@@ -71,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/calcularPlanilla">Calcular planilla</a>
+                <a class="nav-link" href="/calcularPlanilla">Calcular planilla de sueldos</a>
             </li>
 
         </ul>
@@ -86,7 +84,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>Inasistencias</h1>
+        <h1 class="fw-bold" >Inasistencias</h1>
     </div>
     <table class="table">
         <thead>

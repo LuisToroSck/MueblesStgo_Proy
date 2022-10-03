@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  mysql-db:
+    image: mysql:8
+    restart: always
+    volumes:
+      - data-bd:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: bd
+    ports:
+      - "33060:3306"
+  app:
+    container_name: app-tingeso
+    image: luistoro17/app-tingeso
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://mysql-db:3306/bd
+      DB_USERNAME: root
+      DB_PASSWORD: 123456
+    #deploy:
+      #restart_policy:
+        #condition: on-failure
+    depends_on:
+      - mysql-db
+volumes:
+  data-bd:

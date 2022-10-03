@@ -23,13 +23,13 @@ public class DataRelojService {
 
     @Autowired
     DataRelojRepository dataRelojRepository;
+
     public DatarelojEntity guardarDataReloj(DatarelojEntity reloj){
         return dataRelojRepository.save(reloj);
     }
 
     public void guardarDatos() throws FileNotFoundException {
-        /*List<DatarelojEntity> datos = new ArrayList<DatarelojEntity>();*/
-        String ruta = "cargas/marcaRelojEmpleados.txt";
+        String ruta = "cargas/DATA.txt";
         File archivo = new File(ruta);
 
         try {
@@ -71,35 +71,29 @@ public class DataRelojService {
         atrasos.add(0);
         atrasos.add(0);
 
-        /*atrasos.set(0,0);
-        System.out.println("Se setea en 0 la posición 0");
-        atrasos.set(1,0);
-        atrasos.set(2,0);*/
-
         int i=0;
         while(i<marcasReloj.size()){
             if(marcasReloj.get(i).getRutEmpleadoReloj().equals(empleado.getRutEmpleado())){
                 if( (marcasReloj.get(i).getHora().getHours() == 8) && (marcasReloj.get(i).getHora().getMinutes() > 10) && (marcasReloj.get(i).getHora().getMinutes() <= 25)){
-                    System.out.println("1. id: "+marcasReloj.get(i).getIdDataReloj());
                     atrasos.set(0,atrasos.get(0)+1);
                 }
                 else if( (marcasReloj.get(i).getHora().getHours() == 8) && (marcasReloj.get(i).getHora().getMinutes() > 25) && (marcasReloj.get(i).getHora().getMinutes() <= 45)){
-                    System.out.println("2. id: "+marcasReloj.get(i).getIdDataReloj());
                     atrasos.set(1,atrasos.get(1)+1);
                 }
                 else if(((marcasReloj.get(i).getHora().getHours() == 8) && ((marcasReloj.get(i).getHora().getMinutes() > 45))) || ((marcasReloj.get(i).getHora().getHours() == 9) && (marcasReloj.get(i).getHora().getMinutes() <= 10))){
-                    System.out.println("3. id: "+marcasReloj.get(i).getIdDataReloj());
                     atrasos.set(2,atrasos.get(2)+1);
                 }
             }
             i = i + 1;
         }
 
-        System.out.println("1. "+atrasos.get(0));
-        System.out.println("2. "+atrasos.get(1));
-        System.out.println("3. "+atrasos.get(2));
-
         return atrasos;
 
     }
+
+    public void eliminarMarcasReloj(){
+        dataRelojRepository.deleteAll();
+    }
+
+
 }

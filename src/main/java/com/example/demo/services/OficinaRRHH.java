@@ -5,6 +5,7 @@ import com.example.demo.entities.EmpleadoEntity;
 import com.example.demo.entities.JustificativoEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,11 +37,8 @@ public class OficinaRRHH {
         LocalDate localDate = empleado.getFechaIngreso().toLocalDate();
 
         int anioIngreso = localDate.getYear();
-        System.out.println("Anio ingreso: "+anioIngreso);
         int anioActual  = LocalDateTime.now().getYear();
-        System.out.println("Anio actual: "+anioActual);
         int aniosServicio = anioActual - anioIngreso;
-        System.out.println("Anios de servicio: "+aniosServicio);
 
         if(aniosServicio >= 25){bonificacionPorServicio = sueldoFijoMensual * 0.17;}
         else if(aniosServicio >= 20){bonificacionPorServicio = sueldoFijoMensual * 0.14;}
@@ -49,12 +47,14 @@ public class OficinaRRHH {
         else if(aniosServicio >= 5){bonificacionPorServicio = sueldoFijoMensual * 0.05;}
         else{bonificacionPorServicio = 0;}
 
-        return bonificacionPorServicio;
+        DecimalFormat formato = new DecimalFormat("#");
+        String bonifStr = formato.format(bonificacionPorServicio);
+        return Double.parseDouble(bonifStr);
     }
 
     public double calcularPagoHorasExtras(EmpleadoEntity empleado, List<AutorizacionEntity> autorizaciones){
 
-        AutorizacionService autorizacionService = null;
+        AutorizacionService autorizacionService = new AutorizacionService();
 
         double pagoHorasExtras = 0;
 

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name= "autorizacion")
@@ -18,6 +19,8 @@ public class AutorizacionEntity {
     private Long id;
 
     private String rutEmpleado;
+
+    private Date fecha;
 
     @Column(unique = false, nullable = true)
     private int cantidadHorasExtras;

@@ -62,6 +62,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>MueblesStgo</finalName>
 	</build>
 
 </project>

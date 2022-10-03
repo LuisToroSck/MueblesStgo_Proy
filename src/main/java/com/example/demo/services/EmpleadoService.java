@@ -20,8 +20,4 @@ public class EmpleadoService {
         return empleadoRepository.save(empleado);
     }
 
-    public EmpleadoEntity obtenerPorRut(String rutEmpleado){
-        return empleadoRepository.findByRutEmpleado(rutEmpleado );
-    }
-
 }

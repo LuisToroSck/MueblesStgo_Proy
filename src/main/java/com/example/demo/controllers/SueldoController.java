@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -43,6 +44,9 @@ public class SueldoController {
         sueldoService.eliminarSueldos();
         sueldoService.calcularPlanilla(empleados,justificativos,marcasReloj,autorizaciones);
 
+        int anioActual  = LocalDateTime.now().getYear();
+
+        model.addAttribute("anioActual",anioActual);
         model.addAttribute("sueldos",sueldoService.listarSueldos());
         model.addAttribute("empleados",empleados);
         return "planilla";

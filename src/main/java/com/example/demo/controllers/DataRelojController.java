@@ -25,19 +25,22 @@ public class DataRelojController {
     DataRelojService reloj;
 
     @Autowired
-    AutorizacionService calculo;
+    AutorizacionService autorizacionService;
 
     @Autowired
-    JustificativoService inasistencias;
+    JustificativoService justificativoService;
 
     @GetMapping("/cargarReloj")
     public String cargarReloj(RedirectAttributes ms) throws FileNotFoundException {
+        autorizacionService.eliminarAutorizaciones();
+        justificativoService.eliminarInasistencias();
+        reloj.eliminarMarcasReloj();
+
         reloj.guardarDatos();
         List<DatarelojEntity> marcasReloj = reloj.listarMarcasReloj();
-        calculo.calcularHorasExtras(marcasReloj);
-        inasistencias.calcularInasistencias(marcasReloj);
-        ms.addFlashAttribute("mensaje", "!Archivo guardado correctamente!");
+        autorizacionService.calcularHorasExtras(marcasReloj);
+        justificativoService.calcularInasistencias(marcasReloj);
+        ms.addFlashAttribute("mensaje", "Archivo subido");
         return "redirect:/";
-
     }
 }

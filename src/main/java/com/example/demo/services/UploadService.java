@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UploadService {
     private String folder="cargas//";
+
     private final Logger logg = LoggerFactory.getLogger(UploadService.class);
 
     public String save(MultipartFile file) {
@@ -21,13 +22,13 @@ public class UploadService {
                 byte [] bytes= file.getBytes();
                 Path path = Paths.get( folder+file.getOriginalFilename() );
                 Files.write(path, bytes);
-                logg.info("Archivo guardado");
+                logg.info("Archivo cargado");
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return "Archivo guardado correctamente";
+        return "DATA.txt subido exitosamente.";
     }
 
 
