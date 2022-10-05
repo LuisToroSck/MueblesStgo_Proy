@@ -29,7 +29,7 @@ public class DataRelojService {
     }
 
     public void guardarDatos() throws FileNotFoundException {
-        String ruta = "cargas/DATA.txt";
+        String ruta = "./DATA.txt";
         File archivo = new File(ruta);
 
         try {
